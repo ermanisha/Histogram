@@ -1,3 +1,7 @@
+/ Copyright(C) 2018 Iti Shree
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
