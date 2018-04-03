@@ -7,8 +7,6 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <string.h>
-#include <opencv2/opencv.hpp>
-#include <highgui.h>
 
 /* Constant declaration */
 #define MAX_IMAGESIZE  1024
@@ -26,7 +24,8 @@ int x_size1, y_size1, /* width & height of image1*/
 
 /* Prototype declaration of functions */
 void load_image_file( ); /* image input */
-void save_image_file( ); /* image output*/
+void save_image_file( ); /* image output */
+void crop_image_file( ); /* crops image */
 
 void load_image_file(char *filename)
 /* Input of header & body information of pgm file */
@@ -78,6 +77,36 @@ void load_image_file(char *filename)
   }
   fclose(fp);
 }
+void crop_image_file(char *filename)
+/* Output cropped imageCropped[][], x_cropped, y_cropped */
+{
+    FILE *fp;
+    int i, j;
+
+    /* Getting coordinates required for cropped images */
+
+    scanf("%d %d", &x1, & x2);
+    scanf("%d %d", &y1, & y2);
+
+    for (i=0; i<x_size1; i++)
+    {
+        for (j=0; j<y_size1; j++)
+        {
+            imageCropped[i][j]=0;
+        }
+    }
+
+    for (i=0; i<x_size1; i++)
+    {
+        for (j=0; j<y_size1; j++)
+        {
+            if((i>=x1 && i<=x2) && (j>=y1 && j<=y2))
+                imageCropped[i][j]=image1[i][j];
+        }
+    }
+
+}
+
 void save_image_file(char *filename)
 /* Output of image2[ ][ ], x_size2, y_size2 */
 {
