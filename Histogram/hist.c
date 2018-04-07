@@ -100,7 +100,7 @@
         {
             for (j=0; j<y_size1; j++)
             {
-                if((i>=x1 && i<=x2) && (j>=y1 && j<=y2))
+                if((i>x1 && i<x2) && (j>y1 && j<y2))
                     imageCropped[i][j]=image1[i][j];
             }
         }
