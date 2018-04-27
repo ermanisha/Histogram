@@ -17,7 +17,7 @@
 
 /* Image storage arrays */
 unsigned char image1[MAX_IMAGESIZE][MAX_IMAGESIZE],
-         image2[MAX_IMAGESIZE][MAX_IMAGESIZE], imageCropped[MAX_IMAGESIZE][MAX_IMAGESIZE];
+              image2[MAX_IMAGESIZE][MAX_IMAGESIZE], imageCropped[MAX_IMAGESIZE][MAX_IMAGESIZE];
 int x_size1, y_size1, /* width & height of image1*/
     x_size2, y_size2; /* width & height of image2 */
 
