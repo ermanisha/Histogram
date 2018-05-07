@@ -16,8 +16,9 @@
 #define MAX_BUFFERSIZE  256
 
 /* Image storage arrays */
-unsigned char image1[MAX_IMAGESIZE][MAX_IMAGESIZE],
-              image2[MAX_IMAGESIZE][MAX_IMAGESIZE], imageCropped[MAX_IMAGESIZE][MAX_IMAGESIZE];
+unsigned char *image1=(unsigned char *)malloc(MAX_IMAGESIZE*MAX_IMAGESIZE* sizeof(unsigned char));
+unsigned char *image2=(unsigned char *)malloc(MAX_IMAGESIZE*MAX_IMAGESIZE* sizeof(unsigned char));
+unsigned char *imageCropped=(unsigned char *)malloc(MAX_IMAGESIZE*MAX_IMAGESIZE* sizeof(unsigned char));
 int x_size1, y_size1, /* width & height of image1*/
     x_size2, y_size2; /* width & height of image2 */
 
@@ -30,7 +31,7 @@ void load_image_file(char *filename)
 /* Input of header & body information of pgm file */
 /* for image1[ ][ ]，x_size1，y_size1 */
 {
-    char buffer[MAX_BUFFERSIZE];
+    char *buffer=(char *)malloc(MAX_IMAGESIZE* sizeof(char));
     FILE *fp; /* File pointer */
     int max_gray; /* Maximum gray level */
     int x, y; /* Loop variable */
@@ -83,6 +84,7 @@ void load_image_file(char *filename)
             image1[y][x] = (unsigned char)fgetc(fp);
         }
     }
+    free(buffer);
     fclose(fp);
 }
 
@@ -140,7 +142,7 @@ void save_image_file(char *filename)
 void make_histogram_image( )
 /* Histogram of image1 is output into image2 */
 {
-    long int histogram[GRAYLEVEL];
+    long int *histogram=(long int*) malloc(GRAYLEVEL * sizeof(long int));
     long int max_frequency; /* Maximum frequency */
     int i, j, x, y; /* control variable */
     int height; /* height of histogram */
