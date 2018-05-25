@@ -5,8 +5,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <string.h>
-#include <opencv2/opencv.hpp>
-#include <highgui.h>
+
 
 /* Constant declaration */
 #define MAX_IMAGESIZE  1024
